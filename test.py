@@ -8,49 +8,47 @@
 #   1  | 2 | 3
 
 
-row1 = "ES/EW/WS/"              #Allar mögulegar leiðir 
-row2 = "NES/WS/NS/"
+row1 = "ES/EW/SW/" #Allar mögulegar leiðir 
+row2 = "NES/SW/NS/"
 row3 = "N/N/V/"
 
-indexY = 0              #Y-ás
-indexX = 0              #X-ás
+indexY = 0  #Y-ás
+indexX = 0  #X-ás
 
 def position(indexX,row):
     counter = -1
-    idex1 = 0 
-    last = 0                    #seinasta /
+    idx = 0
+    last = 0    #seinasta /
     for i in row:
         if i == "/":
             counter += 1
             if counter == indexX:
-                return row[last:idex1]        #reyna finna næsta /
+                return row[last:idx]    #reyna finna næsta /
             else:
-                last = idex1
-        idex1 += 1                             #testa, print(position(indexX,getRox(indexY, rox1, rox2, rox3))) --> fá reit 1 
+                last = idx
+        idx += 1        #testa, print(position(indexX,getRox(indexY, rox1, rox2, rox3))) --> fá reit 1 
 
-def canMove(indexX,row, directions):
-    stadus = position(indexX,row)
-    if directions in stadus:
+def canMove(indexX,row,direction):
+    s = position(indexX,row)
+    if direction in s:
         return True
     else:
-        return False 
+        return False
 
-#vil vita hvert ég er að fara og x og y index 
-
-def changeidex1(directions, indexX, indexY):
-    if directions == "N" or "n":
+        #vil vita hvert ég er að fara og x og y index 
+def changeIdx(direction,indexY,indexX):
+    if direction == "N":
         indexY += 1
-        return indexY, indexX
-    elif directions == "E" or "e":
+        return indexY,indexX
+    elif direction == "E":
         indexX += 1
-        return indexY, indexX
-    elif directions == "S" or "s":
+        return indexY,indexX
+    elif direction == "S":
         indexY -= 1
-        return indexY, indexX
-    elif directions == "W" or "w":
+        return indexY,indexX
+    elif direction == "W":
         indexX -= 1
-        return indexY, indexX
-
+        return indexY,indexX
 
 def getRow(indexY,row1,row2,row3):
     if indexY == 0:
@@ -61,34 +59,32 @@ def getRow(indexY,row1,row2,row3):
         return row1
 
 #láta notendann vita hvað hann getur gert
-
-def printDriections(row):
+def printDirections(row):
     string = ""
     for x in row:
-        if x == "N" or "n":
+        if x == "N":
             string += "(N)orth or "
-        if x == "E" or "e":
+        elif x == "E":
             string += "(E)ast or "
-        elif x == "S" or "s":
+        elif x == "S":
             string += "(S)outh or "
-        elif x == "W" or "w":
-            string += "(W)est or "   
-    string = string[:-4] + "."                 #taka or, 2 space og 2 starfi, og setja punkt
-    return string 
+        elif x == "W":
+            string += "(W)est or "
+    string = string[:-4] + "."  #taka or, 2 space og 2 starfi, og setja punkt
+    return string
 
-#leggja grunninn fyrir hvernig forritið virkar 
 
-val = True
-
-while val: 
-    possible_moves = printDriections(position(indexX,getRow(indexY, row1, row2, row3)))
-    if position(indexX, getRow(indexY, row1, row2, row3)) == "V":
+    #leggja grunninn fyrir hvernig forritið virkar 
+while True:
+    where_can_go = printDirections(position(indexX,getRow(indexY,row1,row2,row3)))
+    if position(indexX,getRow(indexY,row1,row2,row3)) == "/V":
         print("Victory!")
-        break 
-    current = getRow(indexY, row1, row2, row3)
-    print(f"You can travel: {possible_moves}")
-    directions = input("Directions: "
-    if canMove(indexX, current, directions):
-        indexY indexX = changeidex1(directions, indexX, indexY)
+        break
+    current = getRow(indexY,row1,row2,row3)
+    print(f"You can travel: {where_can_go}")
+    direction = input("Direction: ")
+    direction = direction.upper()
+    if canMove(indexX,current,direction):
+        indexY, indexX=changeIdx(direction,indexY,indexX)
     else:
-        print("Not a valid Direction")
+        print("Not a valid direction!")
