@@ -101,15 +101,21 @@ def leaver(row, col, coins, if_ture):
         
 
 # The main program starts here
-victory = False
-row = 1
-col = 1
-if_true = True
-coins = 0
+while True:
+    victory = False
+    row = 1
+    col = 1
+    if_true = True
+    coins = 0
 
-while not victory:
-    valid_directions = find_directions(col, row)
-    coins = leaver(row, col, coins, if_true)
-    print_directions(valid_directions)
-    victory, col, row, if_true = play_one_move(col, row, valid_directions, if_true)
-print("Victory! Total coins {}." .format(coins))
+    while not victory:
+        valid_directions = find_directions(col, row)
+        coins = leaver(row, col, coins, if_true)
+        print_directions(valid_directions)
+        victory, col, row, if_true = play_one_move(col, row, valid_directions, if_true)
+    print("Victory! Total coins {}." .format(coins))
+    play_again = input("Play again (y/n): ")
+    if play_again == "y":
+        continue
+    else:
+        break
