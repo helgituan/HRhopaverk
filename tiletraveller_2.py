@@ -57,7 +57,7 @@ def find_directions(col, row):
         valid_directions = SOUTH+WEST
     return valid_directions
 
-def play_one_move(col, row, valid_directions):
+def play_one_move(col, row, valid_directions, if_true):
     ''' Plays one move of the game
         Return if victory has been obtained and updated col,row '''
     victory = False
@@ -66,31 +66,33 @@ def play_one_move(col, row, valid_directions):
     
     if not direction in valid_directions:
         print("Not a valid direction!")
+        if_true = False
     else:
         col, row = move(direction, col, row)
         victory = is_victory(col, row)
-    return victory, col, row
+        if_true = True
+    return victory, col, row, if_true
 
-def leaver(row, col, coins):
-    if col == 1 and row == 2:
+def leaver(row, col, coins, if_ture):
+    if col == 1 and row == 2 and if_true == True:
         pull = input("Pull a lever (y/n): ")
         if pull == "y":
             coins += 1
             print("You received 1 coin, your total is now {}." .format(coins))
     
-    elif col == 2 and row == 2:
+    elif col == 2 and row == 2 and if_true == True:
         pull = input("Pull a lever (y/n): ")
         if pull == "y":
             coins += 1
             print("You received 1 coin, your total is now {}." .format(coins))
     
-    elif col == 2 and row == 3:
+    elif col == 2 and row == 3 and if_true == True:
         pull = input("Pull a lever (y/n): ")
         if pull == "y":
             coins += 1
             print("You received 1 coin, your total is now {}." .format(coins))
     
-    elif col == 3 and row == 2:
+    elif col == 3 and row == 2 and if_true == True:
         pull = input("Pull a lever (y/n): ")
         if pull == "y":
             coins += 1
@@ -102,11 +104,12 @@ def leaver(row, col, coins):
 victory = False
 row = 1
 col = 1
+if_true = True
 coins = 0
 
 while not victory:
     valid_directions = find_directions(col, row)
-    coins = leaver(row, col, coins)
+    coins = leaver(row, col, coins, if_true)
     print_directions(valid_directions)
-    victory, col, row = play_one_move(col, row, valid_directions)
+    victory, col, row, if_true = play_one_move(col, row, valid_directions, if_true)
 print("Victory! Total coins {}." .format(coins))
