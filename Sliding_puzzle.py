@@ -29,6 +29,8 @@ def initialize_board():
 
     print("poop")
 
+    print("helga var svo fyndin að skrifa poop hér að ofan")
+
     return puzzle_board
 
 
