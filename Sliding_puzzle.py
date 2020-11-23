@@ -1,33 +1,35 @@
-
-#þegar notandi stimplar inn 0 þá hættir hann 
+# þegar notandi stimplar inn 0 þá hættir hann
 # inntak = 5 3 13 7 14 10 0 11 1 4 6 8 12 9 2 15
-#4 tölur í línu 
-# 0 er autt 
-#talan sem hann skimplar inn fer í auða reytin og reiturinn sem hun kom úr verður auður
+# 4 tölur í línu
+# 0 er autt
+# talan sem hann skimplar inn fer í auða reytin og reiturinn sem hun kom úr verður auður
 
 # Constants
-DIM = 4 # dimension of the board DIMxDIM
+DIM = 4  # dimension of the board DIMxDIM
 EMPTYSLOT = 0
 QUIT = 0
 
+
 def initialize_board():
-    ''' Creates the initial board according to the user input.
+    """ Creates the initial board according to the user input.
     The board is a list of lists.
-    The list contains DIM elements (rows), each of which contains DIM elements (columns)'''
+    The list contains DIM elements (rows), each of which contains DIM elements (columns)"""
     numbers = input().split()
     numbers = [int(number) for number in numbers]
     puzzle_board = []
     index = 0
     for _ in range(DIM):
-        row = numbers[index:index + DIM]
+        row = numbers[index : index + DIM]
         index += DIM
         puzzle_board.append(row)
 
+    print("haha vá svo fyndin")
+
     return puzzle_board
-    
+
 
 def display(puzzle_board):
-    ''' Display the board, printing it one row in each line '''
+    """ Display the board, printing it one row in each line """
     print()
     for i in range(DIM):
         for j in range(DIM):
@@ -46,9 +48,7 @@ def moves(puzzle_board):
     for number in puzzle_board:
         print(number)
         # if number == move:
-        #     number = EMPTYSLOT 
-
-    
+        #     number = EMPTYSLOT
 
 
 puzzle_board = initialize_board()
