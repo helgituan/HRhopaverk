@@ -30,6 +30,7 @@ def initialize_board():
     print("poop")
 
     print("helga var svo fyndin að skrifa poop hér að ofan")
+    print("fkuptr")
 
     return puzzle_board
 
