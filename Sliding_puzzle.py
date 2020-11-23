@@ -27,6 +27,8 @@ def initialize_board():
 
     print("þetta er nýtt stuff")
 
+    print("alveg óþolandi að kenna helgu")
+
     return puzzle_board
 
 
