@@ -27,6 +27,8 @@ def initialize_board():
 
     print("þetta er nýtt stuff")
 
+    print("poop")
+
     return puzzle_board
 
 
