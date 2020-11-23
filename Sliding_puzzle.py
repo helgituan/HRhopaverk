@@ -31,7 +31,11 @@ def initialize_board():
 
     print("helga var svo fyndin að skrifa poop hér að ofan")
     print("fkuptr")
+<<<<<<< HEAD
     print("Kulla<3")
+=======
+    print("xddddd")
+>>>>>>> af01433c7edfaf3ef1c9f550ae46d4655ad588af
 
     return puzzle_board
 
